@@ -1,0 +1,2 @@
+-- Compare Actual vs Projected gains at Year/Month/Channel granularity.
+-- The projections are expected to be a separate table produced by FP&A process.

@@ -1,0 +1,9 @@
+{
+  "swimlanes": [
+    "RES-MTM",
+    "RES-TERM",
+    "BUS-MTM",
+    "BUS-TERM"
+  ],
+  "notes": "Extend with ContractClass, ProductType, AccountDetermination once fields are sourced."
+}
