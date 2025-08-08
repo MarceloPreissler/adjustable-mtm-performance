@@ -1,0 +1,15 @@
+# Placeholder for QC thresholds and conditional formats used by highlight_discrepancies.py
+spike_threshold_pct: 150
+min_rows_expected: 10
+channels_expected:
+  - CALL CENTER
+  - Web Search
+  - SOE
+  - RAQ
+  - Agile
+  - DM
+  - BAAT
+  - Partnerships/Events
+  - POLR
+  - Other
+  - Unknown

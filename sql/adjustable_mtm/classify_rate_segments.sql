@@ -1,0 +1,3 @@
+-- Classification mapping logic for MatrixChannel and ScottChannel (to be executed in Python or DB side, your choice)
+-- Included here for reference; our Python loaders apply this mapping via pandas.
+-- See docs/channel_mapping_reference.md

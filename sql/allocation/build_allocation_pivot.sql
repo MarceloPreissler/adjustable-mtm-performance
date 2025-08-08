@@ -1,0 +1,2 @@
+-- Placeholder query for allocation swimlane table (BP type x Premise x Product x AccountDetermination x ContractClass x ProductType).
+-- Actual creation is performed in python/output_formatting/pivot_allocations.py from flat extracts.

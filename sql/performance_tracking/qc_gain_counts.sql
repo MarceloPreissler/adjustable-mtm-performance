@@ -1,0 +1,2 @@
+-- QC check comparing 'Data' source-of-truth aggregation vs '7+5 v1 Update Actuals v2' tab (reconciled target).
+-- In practice this joins two tables/extracts produced by python/extract/run_extract.py.

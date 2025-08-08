@@ -1,0 +1,2 @@
+-- Optional DB‑side audit using Account Determination / Product Type fields if available in warehouse mirror.
+-- Most checks are performed in Python for portability across engines.

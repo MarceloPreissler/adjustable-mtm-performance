@@ -1,0 +1,10 @@
+pandas==2.2.2
+openpyxl==3.1.5
+xlsxwriter==3.2.0
+
+# DB clients
+snowflake-connector-python==3.10.1
+pyodbc==5.1.0
+sqlalchemy==2.0.31
+hdbcli==2.21.28
+python-dotenv==1.0.1

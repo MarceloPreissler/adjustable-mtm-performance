@@ -1,0 +1,13 @@
+# Channel Mapping Reference
+
+- WEB PHONE REACTIVE / REACTIVE / CALL CENTER → CALL CENTER
+- WEB SEARCH / WEB_SEARCH → Web Search
+- ONLINE PARTNER → SOE
+- RAQ / REQUEST A QUOTE / TEE.COM → RAQ
+- OUTBOUND / AGILE / OBTM → Agile
+- DIRECT MAIL / DM → DM
+- BAAT → BAAT
+- PARTNERSHIPS/EVENTS → Partnerships/Events
+- BD_MASS - POLR → POLR
+- UNK / BD_LBM / LBM / DOOR TO DOOR / SPECIALTY_MKT / (blank) → Other
+- Else → Unknown
