@@ -1,13 +1,14 @@
 /*******************************************************************************
- * LINKED SERVER SETUP FOR MTM PERFORMANCE MANAGEMENT
+ * LINKED SERVER VERIFICATION FOR MTM PERFORMANCE MANAGEMENT
  *
- * PURPOSE: Create linked servers to Snowflake and SAP HANA
- * RUN THIS FIRST in your SSMS environment on FTHYN54\MSSQLSERVER2
+ * PURPOSE: Test existing linked servers to Snowflake and SAP HANA
  *
- * PREREQUISITES:
- * - ODBC drivers installed for Snowflake and SAP HANA
- * - DSN configured in Windows ODBC Data Source Administrator
- * - Appropriate permissions to create linked servers
+ * EXISTING LINKED SERVERS:
+ * - SNOWFLAKE (already configured)
+ * - HANA_LINKED (already configured)
+ *
+ * NOTE: You already have these linked servers set up!
+ *       This script just verifies they work correctly.
  *******************************************************************************/
 
 USE master;

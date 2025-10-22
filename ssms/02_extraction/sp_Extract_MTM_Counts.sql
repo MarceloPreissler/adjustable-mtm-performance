@@ -37,7 +37,7 @@ BEGIN
     IF @EnableSnowflake = 1
     BEGIN
         BEGIN TRY
-            PRINT 'Extracting from SNOWFLAKE_LINK...';
+            PRINT 'Extracting from SNOWFLAKE...';
 
             INSERT INTO stg_MTM_Counts_Raw (
                 DataSource, YearLook, MonthLook, CHANNEL, ESID_PREMISE,
@@ -56,7 +56,7 @@ BEGIN
                 RollOut,
                 Loss,
                 EndCount
-            FROM OPENQUERY(SNOWFLAKE_LINK, '
+            FROM OPENQUERY(SNOWFLAKE, '
                 SELECT
                     LEFT(YEARMONTH, 4) AS YearLook,
                     RIGHT(YEARMONTH, 2) AS MonthLook,
@@ -79,7 +79,7 @@ BEGIN
             ');
 
             SET @RowsInserted = @@ROWCOUNT;
-            PRINT 'Inserted ' + CAST(@RowsInserted AS VARCHAR) + ' rows from SNOWFLAKE_LINK';
+            PRINT 'Inserted ' + CAST(@RowsInserted AS VARCHAR) + ' rows from SNOWFLAKE';
 
         END TRY
         BEGIN CATCH
@@ -95,7 +95,7 @@ BEGIN
     IF @EnableHANA = 1
     BEGIN
         BEGIN TRY
-            PRINT 'Extracting from HANA_LINK...';
+            PRINT 'Extracting from HANA_LINKED...';
 
             INSERT INTO stg_MTM_Counts_Raw (
                 DataSource, YearLook, MonthLook, CHANNEL, ESID_PREMISE,
@@ -114,7 +114,7 @@ BEGIN
                 RollOut,
                 Loss,
                 EndCount
-            FROM OPENQUERY(HANA_LINK, '
+            FROM OPENQUERY(HANA_LINKED, '
                 SELECT
                     SUBSTRING(YEARMONTH, 1, 4) AS YearLook,
                     SUBSTRING(YEARMONTH, 5, 2) AS MonthLook,
@@ -137,7 +137,7 @@ BEGIN
             ');
 
             SET @RowsInserted = @@ROWCOUNT;
-            PRINT 'Inserted ' + CAST(@RowsInserted AS VARCHAR) + ' rows from HANA_LINK';
+            PRINT 'Inserted ' + CAST(@RowsInserted AS VARCHAR) + ' rows from HANA_LINKED';
 
         END TRY
         BEGIN CATCH
@@ -220,4 +220,6 @@ GO
 
 PRINT 'Created stored procedure: sp_Extract_MTM_Counts';
 PRINT 'Usage: EXEC sp_Extract_MTM_Counts @EnableSnowflake=1, @EnableHANA=1, @EnableLocalSQLServer=0';
+PRINT '';
+PRINT 'NOTE: Uses existing linked servers SNOWFLAKE and HANA_LINKED';
 GO

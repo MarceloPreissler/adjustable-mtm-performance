@@ -5,25 +5,19 @@
 ### ✅ STEP 1: Prerequisites (Do This First!)
 
 - [ ] **Open SSMS** on `FTHYN54\MSSQLSERVER2`
-- [ ] **Verify ODBC Drivers** installed:
-  - Windows → ODBC Data Sources (64-bit)
-  - Check for Snowflake driver
-  - Check for SAP HANA driver
-- [ ] **Create DSNs** (if not already done):
-  - [ ] Snowflake DSN (note the name: _____________)
-  - [ ] HANA DSN (note the name: _____________)
+- [X] **Linked Servers Already Configured!**
+  - [X] SNOWFLAKE (existing linked server)
+  - [X] HANA_LINKED (existing linked server)
 
 ---
 
 ### ✅ STEP 2: Initial Setup (Run Once)
 
-**2.1 Create Linked Servers**
-- [ ] Open `ssms/01_setup/create_linked_servers.sql`
-- [ ] Update line 20: Replace `'SnowflakeDSN'` with your actual DSN name
-- [ ] Update line 48: Replace `'HANAODBC'` with your actual DSN name
-- [ ] Update credentials if not using DSN auth (lines 38, 66)
+**2.1 Test Linked Servers**
+- [ ] Open `ssms/01_setup/test_linked_servers.sql`
 - [ ] **Run the script** in SSMS
-- [ ] Verify connections tested successfully
+- [ ] Verify SNOWFLAKE connection successful ✓
+- [ ] Verify HANA_LINKED connection successful ✓
 
 **2.2 Create Database and Tables**
 - [ ] Open `ssms/01_setup/create_database_and_tables.sql`
@@ -239,12 +233,12 @@ ORDER BY YearMonth;
 
 If you haven't filled in the sections above, **I NEED THIS INFO:**
 
-1. **Snowflake DSN Name**: ___________________
-2. **HANA DSN Name**: ___________________
-3. **StatusFact Table**: database.schema.table = ___________________
-4. **EDM COGS Table**: database.schema.table = ___________________
-5. **FP&A Plan Table**: database.schema.table = ___________________
-6. **AMS Usage Table**: database.schema.table = ___________________
+1. **StatusFact Table**: database.schema.table = ___________________
+2. **EDM COGS Table**: database.schema.table = ___________________
+3. **FP&A Plan Table**: database.schema.table = ___________________
+4. **AMS Usage Table**: database.schema.table = ___________________
+
+**Linked Servers:** ✅ Already configured (SNOWFLAKE and HANA_LINKED)
 
 **Send this info and I'll update the scripts for you!**
 

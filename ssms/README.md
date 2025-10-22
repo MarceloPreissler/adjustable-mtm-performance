@@ -65,19 +65,20 @@ ssms/
 
 ## 🚀 Quick Start Guide
 
-### **STEP 1: Setup Linked Servers**
+### **STEP 1: Verify Linked Servers**
 
-Run in SSMS on your server (`FTHYN54\MSSQLSERVER2`):
+You already have these linked servers configured:
+- `SNOWFLAKE` ✅
+- `HANA_LINKED` ✅
+
+Test them in SSMS on your server (`FTHYN54\MSSQLSERVER2`):
 
 ```sql
--- Update DSN names with your actual ODBC Data Source Names
-:r "01_setup/create_linked_servers.sql"
+-- Test your existing linked servers
+:r "01_setup/test_linked_servers.sql"
 ```
 
-**What You Need to Update:**
-- `@datasrc = 'SnowflakeDSN'` → Your Snowflake ODBC DSN name
-- `@datasrc = 'HANAODBC'` → Your SAP HANA ODBC DSN name
-- Login credentials (or use DSN credentials)
+This will verify both connections are working correctly.
 
 ---
 
