@@ -36,7 +36,7 @@ CREATE TABLE #PricingTables (
     SchemaName NVARCHAR(128),
     TableName NVARCHAR(128),
     FullTableName NVARCHAR(400),
-    RowCount BIGINT
+    RowCnt BIGINT
 );
 
 -- Search for pricing-related tables across all databases
@@ -45,13 +45,13 @@ SET @sql = N'';
 
 SELECT @sql = @sql + N'
 USE [' + name + N'];
-INSERT INTO #PricingTables (DatabaseName, SchemaName, TableName, FullTableName, RowCount)
+INSERT INTO #PricingTables (DatabaseName, SchemaName, TableName, FullTableName, RowCnt)
 SELECT
     ''' + name + N''' AS DatabaseName,
     s.name AS SchemaName,
     t.name AS TableName,
     ''' + name + N'.['' + s.name + ''].['' + t.name + '']'' AS FullTableName,
-    p.rows AS RowCount
+    p.rows AS RowCnt
 FROM sys.tables t
 INNER JOIN sys.schemas s ON t.schema_id = s.schema_id
 INNER JOIN sys.partitions p ON t.object_id = p.object_id AND p.index_id IN (0,1)
@@ -76,13 +76,13 @@ BEGIN TRY
         PRINT 'FOUND PRICING TABLE CANDIDATES:';
         PRINT '';
         SELECT
-            ROW_NUMBER() OVER (ORDER BY RowCount DESC) AS [#],
+            ROW_NUMBER() OVER (ORDER BY RowCnt DESC) AS [#],
             DatabaseName,
             SchemaName,
             TableName,
-            FORMAT(RowCount, 'N0') AS [Rows]
+            FORMAT(RowCnt, 'N0') AS [Rows]
         FROM #PricingTables
-        ORDER BY RowCount DESC;
+        ORDER BY RowCnt DESC;
     END
     ELSE
     BEGIN
@@ -110,20 +110,20 @@ CREATE TABLE #COGSTables (
     SchemaName NVARCHAR(128),
     TableName NVARCHAR(128),
     FullTableName NVARCHAR(400),
-    RowCount BIGINT
+    RowCnt BIGINT
 );
 
 SET @sql = N'';
 
 SELECT @sql = @sql + N'
 USE [' + name + N'];
-INSERT INTO #COGSTables (DatabaseName, SchemaName, TableName, FullTableName, RowCount)
+INSERT INTO #COGSTables (DatabaseName, SchemaName, TableName, FullTableName, RowCnt)
 SELECT
     ''' + name + N''' AS DatabaseName,
     s.name AS SchemaName,
     t.name AS TableName,
     ''' + name + N'.['' + s.name + ''].['' + t.name + '']'' AS FullTableName,
-    p.rows AS RowCount
+    p.rows AS RowCnt
 FROM sys.tables t
 INNER JOIN sys.schemas s ON t.schema_id = s.schema_id
 INNER JOIN sys.partitions p ON t.object_id = p.object_id AND p.index_id IN (0,1)
@@ -146,13 +146,13 @@ BEGIN TRY
         PRINT 'FOUND COGS TABLE CANDIDATES:';
         PRINT '';
         SELECT
-            ROW_NUMBER() OVER (ORDER BY RowCount DESC) AS [#],
+            ROW_NUMBER() OVER (ORDER BY RowCnt DESC) AS [#],
             DatabaseName,
             SchemaName,
             TableName,
-            FORMAT(RowCount, 'N0') AS [Rows]
+            FORMAT(RowCnt, 'N0') AS [Rows]
         FROM #COGSTables
-        ORDER BY RowCount DESC;
+        ORDER BY RowCnt DESC;
     END
     ELSE
     BEGIN
@@ -180,20 +180,20 @@ CREATE TABLE #PlanTables (
     SchemaName NVARCHAR(128),
     TableName NVARCHAR(128),
     FullTableName NVARCHAR(400),
-    RowCount BIGINT
+    RowCnt BIGINT
 );
 
 SET @sql = N'';
 
 SELECT @sql = @sql + N'
 USE [' + name + N'];
-INSERT INTO #PlanTables (DatabaseName, SchemaName, TableName, FullTableName, RowCount)
+INSERT INTO #PlanTables (DatabaseName, SchemaName, TableName, FullTableName, RowCnt)
 SELECT
     ''' + name + N''' AS DatabaseName,
     s.name AS SchemaName,
     t.name AS TableName,
     ''' + name + N'.['' + s.name + ''].['' + t.name + '']'' AS FullTableName,
-    p.rows AS RowCount
+    p.rows AS RowCnt
 FROM sys.tables t
 INNER JOIN sys.schemas s ON t.schema_id = s.schema_id
 INNER JOIN sys.partitions p ON t.object_id = p.object_id AND p.index_id IN (0,1)
@@ -218,13 +218,13 @@ BEGIN TRY
         PRINT 'FOUND PLAN TABLE CANDIDATES:';
         PRINT '';
         SELECT
-            ROW_NUMBER() OVER (ORDER BY RowCount DESC) AS [#],
+            ROW_NUMBER() OVER (ORDER BY RowCnt DESC) AS [#],
             DatabaseName,
             SchemaName,
             TableName,
-            FORMAT(RowCount, 'N0') AS [Rows]
+            FORMAT(RowCnt, 'N0') AS [Rows]
         FROM #PlanTables
-        ORDER BY RowCount DESC;
+        ORDER BY RowCnt DESC;
     END
     ELSE
     BEGIN
@@ -252,20 +252,20 @@ CREATE TABLE #UsageTables (
     SchemaName NVARCHAR(128),
     TableName NVARCHAR(128),
     FullTableName NVARCHAR(400),
-    RowCount BIGINT
+    RowCnt BIGINT
 );
 
 SET @sql = N'';
 
 SELECT @sql = @sql + N'
 USE [' + name + N'];
-INSERT INTO #UsageTables (DatabaseName, SchemaName, TableName, FullTableName, RowCount)
+INSERT INTO #UsageTables (DatabaseName, SchemaName, TableName, FullTableName, RowCnt)
 SELECT
     ''' + name + N''' AS DatabaseName,
     s.name AS SchemaName,
     t.name AS TableName,
     ''' + name + N'.['' + s.name + ''].['' + t.name + '']'' AS FullTableName,
-    p.rows AS RowCount
+    p.rows AS RowCnt
 FROM sys.tables t
 INNER JOIN sys.schemas s ON t.schema_id = s.schema_id
 INNER JOIN sys.partitions p ON t.object_id = p.object_id AND p.index_id IN (0,1)
@@ -290,13 +290,13 @@ BEGIN TRY
         PRINT 'FOUND USAGE TABLE CANDIDATES:';
         PRINT '';
         SELECT
-            ROW_NUMBER() OVER (ORDER BY RowCount DESC) AS [#],
+            ROW_NUMBER() OVER (ORDER BY RowCnt DESC) AS [#],
             DatabaseName,
             SchemaName,
             TableName,
-            FORMAT(RowCount, 'N0') AS [Rows]
+            FORMAT(RowCnt, 'N0') AS [Rows]
         FROM #UsageTables
-        ORDER BY RowCount DESC;
+        ORDER BY RowCnt DESC;
     END
     ELSE
     BEGIN
@@ -332,7 +332,7 @@ BEGIN
     PRINT '-- ================================================================';
 
     DECLARE pricing_cursor CURSOR FOR
-    SELECT TOP 3 FullTableName FROM #PricingTables ORDER BY RowCount DESC;
+    SELECT TOP 3 FullTableName FROM #PricingTables ORDER BY RowCnt DESC;
 
     OPEN pricing_cursor;
     FETCH NEXT FROM pricing_cursor INTO @TableName;
@@ -360,7 +360,7 @@ BEGIN
     PRINT '-- ================================================================';
 
     DECLARE cogs_cursor CURSOR FOR
-    SELECT TOP 3 FullTableName FROM #COGSTables ORDER BY RowCount DESC;
+    SELECT TOP 3 FullTableName FROM #COGSTables ORDER BY RowCnt DESC;
 
     OPEN cogs_cursor;
     FETCH NEXT FROM cogs_cursor INTO @TableName;
@@ -388,7 +388,7 @@ BEGIN
     PRINT '-- ================================================================';
 
     DECLARE plan_cursor CURSOR FOR
-    SELECT TOP 3 FullTableName FROM #PlanTables ORDER BY RowCount DESC;
+    SELECT TOP 3 FullTableName FROM #PlanTables ORDER BY RowCnt DESC;
 
     OPEN plan_cursor;
     FETCH NEXT FROM plan_cursor INTO @TableName;
@@ -416,7 +416,7 @@ BEGIN
     PRINT '-- ================================================================';
 
     DECLARE usage_cursor CURSOR FOR
-    SELECT TOP 3 FullTableName FROM #UsageTables ORDER BY RowCount DESC;
+    SELECT TOP 3 FullTableName FROM #UsageTables ORDER BY RowCnt DESC;
 
     OPEN usage_cursor;
     FETCH NEXT FROM usage_cursor INTO @TableName;
